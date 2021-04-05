@@ -6,38 +6,45 @@ using System.Threading.Tasks;
 
 namespace _5._1
 {
-    class Order:IComparable//实体类和业务逻辑类要分开
+    [Serializable]
+    public class Order :IComparable//实体类和业务逻辑类要分开
     {
         public Client Purchaser{ set; get; }
         public int OrderID { set; get; }
-        public List<OrderDetail> Details { set; get; }
-        //private int _totalPrice;
-        public int TotalPrice
+        public List<OrderDetail> Details { set; get; } = new List<OrderDetail>();
+        //private float _totalPrice;
+        public float TotalPrice
         {
-            set;
-            get;
-        }
-        public int calPrice()
-        {
-            foreach (OrderDetail d in Details)
+           
+            get
+            {
+                float price = 0;
+                foreach (OrderDetail d in Details)
                             {
-                                TotalPrice += d.goods.price*d.count;
+                    price += d.goods.price * d.count;
                             }
-                            return TotalPrice;
+                            return price;
+               //Details.Sum()
+            }
         }
+        //public int calPrice()
+        //{
+            
+        //}
 
-        public Order(Client purchaser, int orderID, List<OrderDetail> details, int totalPrice)
+        public Order(Client purchaser, int orderID, List<OrderDetail> details)
         {
             this.Purchaser = purchaser;
             this.OrderID = orderID;
             this.Details = details;
-            this.TotalPrice = totalPrice;
         }
+        public Order() { }
         
         
         public override bool Equals(object obj)
-        {
-            return obj is Order order &&OrderID == order.OrderID ;
+        {//有可能传null或另外类
+            var order = obj as Order;
+            return order!=null &&OrderID == order.OrderID ;
         }
 
         public override int GetHashCode()

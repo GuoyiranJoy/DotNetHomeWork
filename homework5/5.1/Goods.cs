@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace _5._1
 {
-    class Goods
+    public class Goods
     {
         public int price { set; get; }
         public string name { set; get; }
         public int goodsID { set; get; }
 
+        public Goods()
+        {
+        }
 
         public Goods(int price, string name, int goodsID)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _5._1
 {
-    class OrderDetail
+    public class OrderDetail
     {
         public Goods goods { set; get; }//一个订单明细只能有一份货物
         public string remark { set; get; }//订单备注
@@ -19,6 +19,10 @@ namespace _5._1
             this.remark = remark;
             this.specification = specification;
             this.count = count;
+        }
+
+        public OrderDetail()
+        {
         }
 
         public override bool Equals(object obj)
@@ -42,7 +46,7 @@ namespace _5._1
 
         public override string ToString()
         {
-            return "\n"+goods + "\nspecification" + specification + "\nremark:" + remark+"\ncount:"+count;
+            return "\n"+goods + "\nspecification: " + specification + "\nremark:" + remark+"\ncount:"+count;
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _5._1
 {
-    class Client
+    public class Client
     {
         public string name { set; get; }
         public long telephone { set; get; }
@@ -15,6 +15,10 @@ namespace _5._1
         {
             return "Client's name is " + name + "\ntelephone number is "
                 + telephone + "\naddress is " + address;
+        }
+
+        public Client()
+        {
         }
 
         public Client(string name, long telephone, string address)
