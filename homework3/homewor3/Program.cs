@@ -15,6 +15,8 @@ namespace homework3
         }
     public class Rectangle:Shape
         {
+            private int width;
+            private int height;
             public int Width
         {
             set;get;
@@ -26,38 +28,40 @@ namespace homework3
             public Rectangle(int w,int h)
             {
                 
-                Width = w;
-                Height = h;
+                width = w;
+                height = h;
             }
             public int GetArea()
             {
                 if (!isValid())
                 {
-                    throw new InvalidOperationException("长方形的长和宽必须大于零！");
+                    throw new MyException("长方形的长和宽必须大于零！");
                 }
-                else { return Width * Height; }
+                else { return width * height; }
             }
             public bool isValid()
             {
-                return Width >0&&Height>0;
+                return width >0&&height>0;
             }
         }
 
         public class Square : Rectangle
         {
-           
+            private int side;
         public int Side
         {
             set; get;
         }
         public Square(int side):base(side, side)
             {
-                this.Side=side;
+                this.side=side;
             }
 
         }
         public class Triangle : Shape
         {
+            private int length;
+            private int height;
         public int Length
         {
             set; get;
@@ -69,8 +73,8 @@ namespace homework3
 
         public Triangle(int v1, int v2)
             {
-                Length=v1;
-                Height=v2;
+                length=v1;
+                height=v2;
             }
 
 
@@ -78,21 +82,21 @@ namespace homework3
             {
                 if (!isValid())
                 {
-                    throw new InvalidOperationException("三角形的长和高必须大于零!");
+                    throw new MyException("三角形的长和高必须大于零!");
                 }
                 else
                 {
-                    return (Height * Length) / 2;
+                    return (height * length) / 2;
                 }
             }
             public bool isValid()
             {
-                return Length > 0 && Height >0;
+                return length > 0 && height >0;
             }
         }
-        class InvalidOperationException : Exception
+        class MyException : Exception
         {
-            public InvalidOperationException(string message) : base(message)
+            public MyException(string message) : base(message)
             {
 
             }

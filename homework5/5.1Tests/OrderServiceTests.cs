@@ -12,18 +12,16 @@ namespace _5._1.Tests
 
     public class OrderServiceTests
     {
-        
+        OrderService service = new OrderService();
         Order order1;
         Order order2;
         Client Joy;
         Client JJ;
         OrderDetail redPen;
-        OrderService service;
 
         [TestInitialize()]
         public void init()
         {
-            service=new OrderService();
             //第一个订单，里面有红黑笔
             Joy = new Client("Joy", 18601967669, "whu");
             Goods pen = new Goods(10, "pen", 01);
@@ -46,13 +44,11 @@ namespace _5._1.Tests
             orderDetails2.Add(blackPen);
             order2 = new Order(JJ, 002, orderDetails2);
 
-            
-
         }
-        //把正确和错误的操作都考虑进去
         [TestMethod()]
         public void addOrderTest()
         {
+            
             service.addOrder(order2);
             //Assert.Fail();
         }
@@ -73,7 +69,7 @@ namespace _5._1.Tests
             od1s.Add(od1);
             Order newOrder1 = new Order(Joy, 1, od1s);
             service.changeOrder(newOrder1);
-            //Assert看看数量是不是还是3个
+            //Assert.Fail();
         }
 
         [TestMethod()]
@@ -104,6 +100,9 @@ namespace _5._1.Tests
         {
             service.addOrder(order2);
             Assert.IsTrue(service.selectbyName("cd").ElementAt(0) == order2);
+            
+            
+            
         }
 
         [TestMethod()]
@@ -142,7 +141,6 @@ namespace _5._1.Tests
             service.Export("Orders1");
         }
 
-        //这里要查是不是导入错误
         [TestMethod()]
         public void importTest()
         {
