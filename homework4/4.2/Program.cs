@@ -48,7 +48,7 @@ namespace _4._2
         public ClockEvent event1 = new ClockEvent();
         public Clock()
         {//为Tick事件添加两个处理方法
-            event1.Tick += addTime;
+            event1.Tick += addTime;//订阅事件，发生后会得到通知
             event1.Tick += showTime;
             //为Alarm事件添加一个方法
             event1.Alarm += showAlarm;

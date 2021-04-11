@@ -148,7 +148,7 @@ namespace _5._1
         }
         //将所有订单序列化为XML文档
         public void Export(string name)
-        {
+        {//不能用try-catch异常处理
             XmlSerializer xs = new XmlSerializer(typeof(List<Order>));
             using (FileStream fs = new FileStream(name + ".xml", FileMode.Create))
             {
@@ -166,6 +166,7 @@ namespace _5._1
                 //orders.Union(newOrders);不知道为什么这个没用
                 foreach (Order o in newOrders)
                 {
+                    if(!orders.Contains(o))
                     orders.Add(o);
                 }
             }

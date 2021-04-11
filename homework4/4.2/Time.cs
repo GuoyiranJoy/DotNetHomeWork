@@ -40,5 +40,9 @@ namespace _4._2
         {
             return this.Hour == t.Hour && this.Minute == t.Minute && this.Second == t.Second;
         }
+        public bool isValid(Time t)
+        {
+            return 0<=t.Hour<24&&
+        }
     }
 }

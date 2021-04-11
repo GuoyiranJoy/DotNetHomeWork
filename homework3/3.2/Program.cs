@@ -31,7 +31,7 @@ namespace homework4
                         return new Triangle(length, height2);
 
                     default:
-                        return null;
+                        throw new InvalidOperationException("输入的形状错误");
                 }
             }
         }
