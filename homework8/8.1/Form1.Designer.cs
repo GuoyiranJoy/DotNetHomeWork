@@ -31,6 +31,10 @@ namespace _8._1
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.change_btn = new System.Windows.Forms.Button();
+            this.import_btn = new System.Windows.Forms.Button();
+            this.export_btn = new System.Windows.Forms.Button();
+            this.delete_btn = new System.Windows.Forms.Button();
             this.searchListBox = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.add_btn = new System.Windows.Forms.Button();
@@ -40,36 +44,38 @@ namespace _8._1
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.orderDetailbindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.OrderbindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.bdsDetails = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsOrders = new System.Windows.Forms.BindingSource(this.components);
             this.orderIDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.purchaserDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalPriceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.goodsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.remarkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.specificationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.countDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderDetailbindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OrderbindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsDetails)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.change_btn);
+            this.panel1.Controls.Add(this.import_btn);
+            this.panel1.Controls.Add(this.export_btn);
+            this.panel1.Controls.Add(this.delete_btn);
             this.panel1.Controls.Add(this.searchListBox);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.add_btn);
@@ -81,6 +87,46 @@ namespace _8._1
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1642, 183);
             this.panel1.TabIndex = 0;
+            // 
+            // change_btn
+            // 
+            this.change_btn.Location = new System.Drawing.Point(220, 93);
+            this.change_btn.Name = "change_btn";
+            this.change_btn.Size = new System.Drawing.Size(119, 63);
+            this.change_btn.TabIndex = 10;
+            this.change_btn.Text = "修改订单";
+            this.change_btn.UseVisualStyleBackColor = true;
+            this.change_btn.Click += new System.EventHandler(this.change_btn_Click);
+            // 
+            // import_btn
+            // 
+            this.import_btn.Location = new System.Drawing.Point(811, 93);
+            this.import_btn.Name = "import_btn";
+            this.import_btn.Size = new System.Drawing.Size(130, 63);
+            this.import_btn.TabIndex = 9;
+            this.import_btn.Text = "导入订单";
+            this.import_btn.UseVisualStyleBackColor = true;
+            this.import_btn.Click += new System.EventHandler(this.import_btn_Click);
+            // 
+            // export_btn
+            // 
+            this.export_btn.Location = new System.Drawing.Point(609, 93);
+            this.export_btn.Name = "export_btn";
+            this.export_btn.Size = new System.Drawing.Size(130, 63);
+            this.export_btn.TabIndex = 8;
+            this.export_btn.Text = "导出订单";
+            this.export_btn.UseVisualStyleBackColor = true;
+            this.export_btn.Click += new System.EventHandler(this.export_btn_Click);
+            // 
+            // delete_btn
+            // 
+            this.delete_btn.Location = new System.Drawing.Point(407, 93);
+            this.delete_btn.Name = "delete_btn";
+            this.delete_btn.Size = new System.Drawing.Size(130, 63);
+            this.delete_btn.TabIndex = 7;
+            this.delete_btn.Text = "删除订单";
+            this.delete_btn.UseVisualStyleBackColor = true;
+            this.delete_btn.Click += new System.EventHandler(this.delete_btn_Click);
             // 
             // searchListBox
             // 
@@ -109,11 +155,11 @@ namespace _8._1
             // 
             this.add_btn.Location = new System.Drawing.Point(37, 93);
             this.add_btn.Name = "add_btn";
-            this.add_btn.Size = new System.Drawing.Size(195, 63);
+            this.add_btn.Size = new System.Drawing.Size(119, 63);
             this.add_btn.TabIndex = 3;
-            this.add_btn.Text = "添加/修改订单";
+            this.add_btn.Text = "添加订单";
             this.add_btn.UseVisualStyleBackColor = true;
-            this.add_btn.Click += new System.EventHandler(this.button2_Click);
+            this.add_btn.Click += new System.EventHandler(this.add_btn_Click);
             // 
             // query_btn
             // 
@@ -164,11 +210,12 @@ namespace _8._1
             this.dataGridView2.AutoGenerateColumns = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Index,
             this.goodsDataGridViewTextBoxColumn,
             this.remarkDataGridViewTextBoxColumn,
             this.specificationDataGridViewTextBoxColumn,
             this.countDataGridViewTextBoxColumn});
-            this.dataGridView2.DataSource = this.orderDetailbindingSource1;
+            this.dataGridView2.DataSource = this.bdsDetails;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.Location = new System.Drawing.Point(1059, 0);
             this.dataGridView2.Name = "dataGridView2";
@@ -176,11 +223,7 @@ namespace _8._1
             this.dataGridView2.RowTemplate.Height = 37;
             this.dataGridView2.Size = new System.Drawing.Size(583, 586);
             this.dataGridView2.TabIndex = 1;
-            // 
-            // orderDetailbindingSource1
-            // 
-            this.orderDetailbindingSource1.DataMember = "Details";
-            this.orderDetailbindingSource1.DataSource = this.OrderbindingSource1;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // dataGridView1
             // 
@@ -192,7 +235,7 @@ namespace _8._1
             this.orderIDDataGridViewTextBoxColumn1,
             this.purchaserDataGridViewTextBoxColumn1,
             this.totalPriceDataGridViewTextBoxColumn1});
-            this.dataGridView1.DataSource = this.OrderbindingSource1;
+            this.dataGridView1.DataSource = this.bdsOrders;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Left;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
@@ -201,36 +244,22 @@ namespace _8._1
             this.dataGridView1.Size = new System.Drawing.Size(1059, 586);
             this.dataGridView1.TabIndex = 0;
             // 
-            // button2
+            // bdsDetails
             // 
-            this.button2.Location = new System.Drawing.Point(359, 93);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(130, 63);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "删除订单";
-            this.button2.UseVisualStyleBackColor = true;
+            this.bdsDetails.DataMember = "Details";
+            this.bdsDetails.DataSource = this.bdsOrders;
             // 
-            // button3
+            // dataGridViewTextBoxColumn1
             // 
-            this.button3.Location = new System.Drawing.Point(609, 93);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(130, 63);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "导出订单";
-            this.button3.UseVisualStyleBackColor = true;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Goods";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Index";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 10;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 200;
             // 
-            // button4
+            // bdsOrders
             // 
-            this.button4.Location = new System.Drawing.Point(875, 93);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(130, 63);
-            this.button4.TabIndex = 9;
-            this.button4.Text = "导入订单";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // OrderbindingSource1
-            // 
-            this.OrderbindingSource1.DataSource = typeof(_5._1.Order);
+            this.bdsOrders.DataSource = typeof(_5._1.Order);
             // 
             // orderIDDataGridViewTextBoxColumn1
             // 
@@ -256,6 +285,26 @@ namespace _8._1
             this.totalPriceDataGridViewTextBoxColumn1.Name = "totalPriceDataGridViewTextBoxColumn1";
             this.totalPriceDataGridViewTextBoxColumn1.ReadOnly = true;
             this.totalPriceDataGridViewTextBoxColumn1.Width = 200;
+            // 
+            // orderBindingSource
+            // 
+            this.orderBindingSource.DataSource = typeof(_5._1.Order);
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = typeof(_5._1.Order);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // Index
+            // 
+            this.Index.DataPropertyName = "Index";
+            this.Index.HeaderText = "Index";
+            this.Index.MinimumWidth = 10;
+            this.Index.Name = "Index";
+            this.Index.Width = 200;
             // 
             // goodsDataGridViewTextBoxColumn
             // 
@@ -289,14 +338,6 @@ namespace _8._1
             this.countDataGridViewTextBoxColumn.Name = "countDataGridViewTextBoxColumn";
             this.countDataGridViewTextBoxColumn.Width = 200;
             // 
-            // orderBindingSource
-            // 
-            this.orderBindingSource.DataSource = typeof(_5._1.Order);
-            // 
-            // bindingSource1
-            // 
-            this.bindingSource1.DataSource = typeof(_5._1.Order);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
@@ -311,9 +352,9 @@ namespace _8._1
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderDetailbindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.OrderbindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsDetails)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
@@ -330,23 +371,28 @@ namespace _8._1
         private System.Windows.Forms.Button query_btn;
         private System.Windows.Forms.TextBox queryInput;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.BindingSource OrderbindingSource1;
-        private System.Windows.Forms.BindingSource orderDetailbindingSource1;
+        private System.Windows.Forms.BindingSource bdsOrders;
+        private System.Windows.Forms.BindingSource bdsDetails;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.BindingSource orderBindingSource;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn goodsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn remarkDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn specificationDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn countDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn orderIDDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn purchaserDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalPriceDataGridViewTextBoxColumn1;
         private System.Windows.Forms.ListBox searchListBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button import_btn;
+        private System.Windows.Forms.Button export_btn;
+        private System.Windows.Forms.Button delete_btn;
+        private System.Windows.Forms.Button change_btn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Index;
+        private System.Windows.Forms.DataGridViewTextBoxColumn goodsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn remarkDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn specificationDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn countDataGridViewTextBoxColumn;
     }
 }
 
