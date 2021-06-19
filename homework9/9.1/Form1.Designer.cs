@@ -1,5 +1,5 @@
 ﻿
-namespace _9._1
+namespace _10._1
 {
     partial class Form1
     {
@@ -35,6 +35,8 @@ namespace _9._1
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.successCrawlBox = new System.Windows.Forms.TextBox();
             this.failedCrawlBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -104,11 +106,31 @@ namespace _9._1
             this.failedCrawlBox.Size = new System.Drawing.Size(636, 541);
             this.failedCrawlBox.TabIndex = 0;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(201, 159);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(106, 24);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "成功页面";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(944, 159);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(106, 24);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "失败页面";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1299, 752);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.startUrlBox);
@@ -134,6 +156,8 @@ namespace _9._1
         private System.Windows.Forms.SplitContainer splitContainer1;
         public System.Windows.Forms.TextBox successCrawlBox;
         public System.Windows.Forms.TextBox failedCrawlBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 

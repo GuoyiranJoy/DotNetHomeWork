@@ -5,7 +5,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.IO;
 
-namespace _9._1
+namespace _10._1
 {
     public partial class Form1 : Form
     {
@@ -23,7 +23,7 @@ namespace _9._1
         {
             myCrawler.startUrl = startUrlBox.Text;
             myCrawler.urls.Add(myCrawler.startUrl, false);//加入初始页面
-            new Thread(Crawl).Start();
+            //new Thread(Crawl).Start();
         }
         public void Crawl()
         {
@@ -44,8 +44,7 @@ namespace _9._1
                 myCrawler.urls[current] = true;//表示已经爬完
                 myCrawler.count++;
                 myCrawler.Parse(html);//解析,并加入新的链接
-                successCrawlBox.Text = "\r\n爬行结束";
-                failedCrawlBox.Text = "\r\n爬行结束";
+                successCrawlBox.Text += "\r\n爬行结束";
             }
         }
         public string DownLoad(string url)

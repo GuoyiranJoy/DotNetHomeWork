@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Text.RegularExpressions;
-namespace _9._1
+namespace _10._1
 {
     class SimpleCrawler
         {
