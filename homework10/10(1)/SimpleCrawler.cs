@@ -1,15 +1,18 @@
 ﻿using System.Collections;
+using System.Collections.Concurrent;
 using System.Text.RegularExpressions;
-namespace _10._1
+namespace _10_1_
 {
     class SimpleCrawler
         {
             public Hashtable urls {set;get; }= new Hashtable();
-            public int count { get; set; } = 0;
+            //待下载队列
+            public ConcurrentQueue<string> pending { get; set; } = new ConcurrentQueue<string>();
+            public int completedCount { get; set; } = 0;
             public string startUrl { set; get; }
             //最大下载数量
             public int MaxPage { get; set; }
-
+        
         public SimpleCrawler(int maxPage)
         {
             MaxPage = maxPage;
@@ -31,8 +34,12 @@ namespace _10._1
                         strRef = startUrl + strRef;//加上XXX
                     int index = startUrl.IndexOf(':');
 
-                    //如果是指定网址的，就将URL放入hashtable中
-                    if (urls[strRef] == null && strRef.Contains(startUrl.Substring(index))) urls[strRef] = false;
+                //如果是指定网址的，就将URL放入hashtable中
+                if (urls[strRef] == null && strRef.Contains(startUrl.Substring(index))) { 
+                    urls[strRef] = false;
+                    pending.Enqueue(strRef);
+                }
+
                 }
             }
         }
